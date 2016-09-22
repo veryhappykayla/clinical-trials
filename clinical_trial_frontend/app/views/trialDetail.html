@@ -1,0 +1,16 @@
+<div>
+    <div class="trial-detail-left-bg">
+        <h1 class="trial-detail-title">Trial Detail:{{trial.name}}</h1>
+        <h2 class="trial-detail-classification"> Classification</h2>
+        <h2 class="trial-detail-subtitle"> Phase III</h2>
+        <h2 class="trial-detail-subtitle"> Long Sponsor</h2>
+    </div>
+    
+    
+</div>
+<div class="trial-detail-similiar-trials-bar">
+    <p class="trial-detail-similiar-trials-text">Simliar Trials</p>
+</div>
+<div class="row">
+    <trial-similar class="col-md-3 nopadding" ng-repeat="trial in similarTrials" ng-click="select(trial)" trial="trial"> {{trial.name}}  </trial-similar>
+</div>

@@ -1,83 +1,208 @@
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+.logo {
+  width: 191px;
+  height: 35px;
+  object-fit: contain;
+  margin-left: 30px;
+  margin-top: 15px;
+  padding-top: 10px;
+}
+.header{  
+  height: 150px;
+  width:100%;
+  background-color: #ededed; 
+}
+.search-bar {
+  width: 600px;
+  height: 40px;
+  /*border-radius: 36px;*/
+  background-color: #d8d8d8;
+  margin: auto;
 }
 
-body {
-  padding: 0;
+.home-bg {
+  width: 100%;
+  height: 422px;
+  background-image: linear-gradient(to right, #88f3e2, rgba(80, 226, 193, 0));
+  /*-webkit-filter: blur(15px);*/
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
+/*.photo-1471864190281-a93a3070b6de {
+  width: 1440px;
+  height: 1024px;
+  -webkit-filter: blur(15px);
+  filter: blur(15px);
+}*/
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
 }
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
-}
-
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+.home-title{  
+  
+  height: 86px;
+  font-family: Roboto;
+  font-size: 73px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  text-align: left;
+  color: #ffffff;
+  width:100%;
+  padding-top:50px;
+  margin-left: 55px;
+  margin-top:0px;
 }
 
-.container-narrow > hr {
-  margin: 30px 0;
+.trial-detail-left-bg {
+  width: 50%;
+  height: 614px;
+  opacity: 0.7;
+  background-color: #3d3d3d;
+  /*background-color: var(--greyish-brown);*/
+}
+.trial-detail-title {
+  width: 90%;
+  /*height: 35px;*/
+  font-family: Roboto;
+  font-size: 30px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  color: #50e3c2;
+  margin-left: 60px;
+  padding-top: 23px;
+  margin-top:0px;
+  /*color: var(--aqua-marine);*/
+}
+.trial-detail-subtitle,.trial-detail-classification {
+  width: 600px;
+  /*height: 29px;*/
+  font-family: Roboto;
+  font-size: 25px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  color: #ffffff;
+  margin-left:60px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.trial-detail-classification {
+  font-weight: bold; 
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
+.trial-detail-similiar-trials-bar {
+  width: 100%;
+  height: 40px;
+  background-color: #ededed;  
+}
+.trial-detail-similiar-trials-text {
+  width: 60%;
+  height: 27px;
+  font-family: Roboto;
+  font-size: 23px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
+  color: #000000;
+  margin: auto;
+  padding-top: 8px;
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
+trial-similar {
+  /*width: 360px;*/
+  height: 180px;
+  object-fit: contain;
+  padding-left: 0px;
+  padding-right: 0px;
+  
 }
-.marketing p + h4 {
-  margin-top: 28px;
+.similar-trial-bg:hover {
+  /*width: 360px;*/
+  background-color: #6cc1b1;
+}
+.similar-trial-bg{
+  /*width: 359px;*/
+  height: 180px;
+  background-color: #34a88e;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+.similar-trial-title {
+  width: 90%;
+  height: 38px;
+  font-family: Source Sans Pro;
+  font-size: 30px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  color: #ffffff;
+  padding-top:8px;
+  margin-top:0px;
+  margin-bottom:5px;
+  margin-left:17px;
+  padding-left:17px;  
 }
+
+.similar-trial-classification{  
+  width: 90%;
+  height: 24px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  color: #ffffff;
+  display:block;
+}
+.similar-trial-phase {
+  width: 90%;
+  height: 24px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  color: #ffffff;
+  display:block;  
+}
+.similar-trial-sponsor {
+  width: 90%;
+  height: 24px;
+  opacity: 0.6;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  color: #ffffff;
+  display:block;
+}
+.similar-trial-text {
+  width: 55%;
+  height: 113px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  text-overflow: ellipsis;
+  overflow: hidden;  
+  margin-left:10px;
+  margin-right:18px;
+  color: #ffffff;
+}
+.similar-trial-left-block{
+  margin-left:17px;
+  padding-left: 17px;
+  float:left;
+  /*width:50%;*/
+  /*vertical-align: text-top;*/
+}
+
+/*
+.similar-trial-text
+*/
