@@ -1,3 +1,4 @@
+options( stringsAsFactors=F ) 
 
 # Read CSV downloaded from ClinicalTrials.gov
 clinical_trials <- read.csv(file = "data/study_fields.csv")
@@ -92,7 +93,7 @@ drugbank <- subset(drugbank, select=c("DrugBank.ID", "drug.name"))
 
 # --------------------------------------
 
-sanger <- read.csv(file = "data/sanger/Screened_Compounds -list with pathways.csv")
+sanger <- read.csv(file = "data/sanger/Screened_Compounds -list with pathways.csv", stringsAsFactors=FALSE)
 sanger$SYNONYMS <- gsub(","," | ", sanger$SYNONYMS)
 sanger$SYNONYMS <- gsub("  "," ", sanger$SYNONYMS)
 sanger$drug.names <- paste(sanger$DRUG.NAME, sanger$SYNONYMS)
@@ -100,7 +101,9 @@ sanger$drug.names <- paste(sanger$DRUG.NAME, sanger$SYNONYMS)
 sanger$TARGET <- gsub(","," | ", sanger$TARGET)
 sanger$TARGET <- gsub("  "," ", sanger$TARGET)
 sanger$target_list <- strsplit(sanger$TARGET, " | ", fixed=TRUE)
+sanger$TARGET.PATHWAY <- as.character(sanger$TARGET.PATHWAY)
 
+target_pathway_mapping <- data.frame(target=character(), pathway=character(), stringsAsFactors=FALSE)
 all_targets <- vector()
 for (i in 1:nrow(sanger)) {
   for (targets in sanger[i, ]$target_list) {
@@ -108,20 +111,106 @@ for (i in 1:nrow(sanger)) {
       if (!(target %in% all_targets)) {
         all_targets <- c(all_targets, target)
       }
+      target_pathway_mapping <- rbind(target_pathway_mapping, c(as.character(target), as.character(sanger[i, ]$TARGET.PATHWAY)))
+      
     }
   }
 }
+
+names(target_pathway_mapping) <- c("target", "pathway")
 
 write.csv(all_targets, file="all_targets.txt", na="", row.names=TRUE)
 
 all_pathways <- unique(sanger$TARGET.PATHWAY)
 write.csv(all_pathways, file="all_pathways.txt", na="", row.names=TRUE)
+write.csv(unique(target_pathway_mapping$pathway), file="all_pathways2.txt", na="", row.names=TRUE)
+
+
 
 # --------------------------------------
 
+
+
+# --------------------------------------
+
+drug_targets <- read.csv(file = "data/drugbank/drugbank_all_target_polypeptide_ids.csv/all.csv")
+drug_targets <- subset(drug_targets, select=c("Drug.IDs", "Gene.Name"))
+
+drug_targets$drug_list <- strsplit(drug_targets$Drug.IDs, "; ", fixed=TRUE)
+
+drug_target_mapping <- data.frame(drug_targets=character(), targets=character())
+for (i in 1:nrow(drug_targets)) {
+  for (drugs in drug_targets[i, ]$drug_list) {
+    for (drug in drugs) {
+      drug_target_mapping <- rbind(drug_target_mapping, c(as.character(drug), as.character(drug_targets[i, ]$Gene.Name)))
+      #print(c(target, sanger[i, ]$TARGET.PATHWAY))
+      #print(paste(target,sanger[i, ]$TARGET.PATHWAY))
+    }
+  }
+}
+names(drug_target_mapping) <- c("drug_id", "target")
+
+Hash <- sapply(unique(drug_target_mapping$drug_id), function(x) {
+  drug_target_mapping[drug_target_mapping$drug_id == x, 2]
+}, simplify = FALSE)
+
+Hash2 <- sapply(Hash, function(x) paste(x, collapse=" | "))
+
+Hash3 <- as.data.frame(Hash2)
+Hash3$drug_id <- rownames(Hash3)
+rownames(Hash3) <- NULL
+names(Hash3) <- c("targets", "drug_id")
+
+final <- merge(drugbank, Hash3, by.x="DrugBank.ID", by.y="drug_id")
+final <- subset(final, select=-DrugBank.ID)
 
 # Read list of immunotherapy genes
-#immune <- read.csv(file = "data/InnateDB_genes immune system genes.csv")
-#immune <- as.character(immune$name)
+immune <- read.csv(file = "data/InnateDB_genes immune system genes.csv")
+immune <- as.character(immune$name)
+
+
+final$immunotherapy <- logical(length=nrow(final))
+final$pathways <- character(length=nrow(final))
+
+for (i in 1:nrow(final)) {
+  #print(final[i, ])
+  for (targets in final[i, ]$targets) {
+    targets_list <-  unlist(strsplit(targets, " | ", fixed=TRUE))
+    pathways_list <- vector()
+    for (mytarget in targets_list) {
+      
+      if (mytarget %in% immune) {
+        final[i, ]$immunotherapy <- TRUE
+      }
+      
+      
+      pathway <- ""
+      if (mytarget %in% target_pathway_mapping$target) {
+        pathway <- target_pathway_mapping[which(target_pathway_mapping$target==mytarget), ]$pathway  
+        
+        if (!(is.null(pathway) || pathway=="" || pathway=="NA")) {
+          #print(paste("PTHWAY:",pathway))
+          if (!(pathway %in% pathways_list)){
+            pathways_list <- c(pathways_list, pathway)
+          }  
+        }
+      }
+      #print(paste("PATH:", pathway))
+      #print(paste(final[i,], "{{{{{", pathway, "}}}}}"))
+    }
+    #print("----")
+  }
+  final[i, ]$pathways <- paste(pathways_list, collapse=" | ")
+  
+  #target_pathway_mapping$immunotherapy <- sapply(target_pathway_mapping$target,
+  #                                               function(x) {ifelse(x %in% immune, TRUE, FALSE)})
+  
+  # print("=============")
+}
+
+
+#drug_targets$drug_list <- strsplit(drug_targets$Drug.IDs, "; ", fixed=TRUE)
 
 # --------------------------------------
+
+write.csv(final, file="drug_table.csv", na="", row.names=TRUE)
