@@ -1,11 +1,21 @@
 <div>
     <div class="trial-detail-left-bg">
-        <h1 class="trial-detail-title">Trial Detail:{{trial.name}}</h1>
-        <h2 class="trial-detail-classification"> Classification</h2>
-        <h2 class="trial-detail-subtitle"> Phase III</h2>
-        <h2 class="trial-detail-subtitle"> Long Sponsor</h2>
+        <h1 class="trial-detail-title">{{trial.title}}</h1>
+        <h2 class="trial-detail-classification"> {{trial.classification}}</h2>
+        <h2 class="trial-detail-subtitle"> {{trial.nct_number}}</h2>
+        <h2 class="trial-detail-subtitle"> Phase: {{trial.phases}}</h2>
+        <h2 class="trial-detail-subtitle"> Recritment Status: {{trial.recruitment}}</h2>
+        <h2 class="trial-detail-subtitle"> Sponsor: {{trial.sponsor}}</h2>
+        <h2 class="trial-detail-subtitle"> Minimum Age: {{trial.age}}</h2>
+        <h2 class="trial-detail-subtitle"> Conditions: {{trial.conditions}}</h2>
+        <h2 class="trial-detail-subtitle"> Enrolled: {{trial.enrolment}}</h2>
+        <h2 class="trial-detail-subtitle"> Funded By: {{trial.funded_by}}</h2>
+        <h2 class="trial-detail-subtitle"> Study Designs: {{trial.study_designs}}</h2>
+        <h2 class="trial-detail-subtitle"> Start Date: {{trial.start_date}}</h2>
+        <!--<h2 class="trial-detail-subtitle"> Outcome Measures: {{trial.outcome_measures}}</h2>-->
     </div>
     
+    <pre>{{trial}}</pre>
     
 </div>
 <div class="trial-detail-similiar-trials-bar">

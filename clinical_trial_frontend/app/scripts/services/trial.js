@@ -8,7 +8,7 @@
  * Factory in the appApp.
  */
 angular.module('appApp')
-  .factory('Trial', function ($q) {
+  .factory('Trial', function ($http,$q) {
     
     var queryDeferred;
     
@@ -24,6 +24,16 @@ angular.module('appApp')
       get_similar: get_list_of_trials
     };
     
+    var baseUrl = "http://127.0.0.1:8000/trials/api/trials/";
+    var realService = {
+      query: get_list_of_trials,
+      get: function (nct){
+        return $http.get(baseUrl+'individual/'+nct+"/?format=json").then(function(response) {
+           return response.data;
+        });
+      },
+      get_similar: get_list_of_trials
+    };
     // Public API here
-    return mockService;
+    return realService;
   });
