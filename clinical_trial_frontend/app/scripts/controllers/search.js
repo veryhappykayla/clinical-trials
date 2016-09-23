@@ -8,7 +8,10 @@
  * Controller of the appApp
  */
 angular.module('appApp')
-  .controller('SearchCtrl', function ($scope,$rootScope,$state) {    
+  .controller('SearchCtrl', function ($scope,$rootScope,$state) {
+    // console.log();
+    $scope.showHeader = true;
+    $scope.failedToLoad = false;    
     $scope.submit = function(txt){
       $scope.failedToLoad = false;
       $state.go('trial',{'trialId':txt});      
@@ -19,4 +22,9 @@ angular.module('appApp')
         $scope.failedToLoad = true;        
       }            
     });
+    $rootScope.$on('$stateChangeSuccess', 
+      function(event, toState, toParams, fromState, fromParams){
+         console.log(toState); 
+        $scope.showHeader = (toState.name == "home")
+       })
   });

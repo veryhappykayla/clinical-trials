@@ -11,6 +11,7 @@ trial-similar {
 .similar-trial-bg:hover {
   /*width: 360px;*/
   background-color: #6cc1b1;
+  cursor: pointer;
 }
 .similar-trial-bg{
   /*width: 359px;*/
@@ -58,12 +59,12 @@ trial-similar {
   color: #ffffff;
   display:block;  
 }
-.similar-trial-sponsor {
+.similar-trial-interventions {
   width: 90%;
   height: 24px;
   opacity: 0.6;
   font-family: Roboto;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 500;
   font-style: normal;
   font-stretch: normal;

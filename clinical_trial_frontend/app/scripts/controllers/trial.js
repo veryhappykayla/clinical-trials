@@ -14,6 +14,6 @@ angular.module('appApp')
     // $scope.trial = {'name':'hello'}
     $scope.similarTrials = Trial.get_similar($scope.trial);
     $scope.select = function (trial){      
-      $state.go("trial",{trialId:trial.name});
+      $state.go("trial",{trialId:trial.ntc_number});
     }
   });

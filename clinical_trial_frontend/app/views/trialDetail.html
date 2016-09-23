@@ -1,21 +1,40 @@
 <div>
     <div class="trial-detail-left-bg">
+        
         <h1 class="trial-detail-title">{{trial.title}}</h1>
-        <h2 class="trial-detail-classification"> {{trial.classification}}</h2>
-        <h2 class="trial-detail-subtitle"> {{trial.nct_number}}</h2>
-        <h2 class="trial-detail-subtitle"> Phase: {{trial.phases}}</h2>
-        <h2 class="trial-detail-subtitle"> Recritment Status: {{trial.recruitment}}</h2>
-        <h2 class="trial-detail-subtitle"> Sponsor: {{trial.sponsor}}</h2>
-        <h2 class="trial-detail-subtitle"> Minimum Age: {{trial.age}}</h2>
-        <h2 class="trial-detail-subtitle"> Conditions: {{trial.conditions}}</h2>
-        <h2 class="trial-detail-subtitle"> Enrolled: {{trial.enrolment}}</h2>
-        <h2 class="trial-detail-subtitle"> Funded By: {{trial.funded_by}}</h2>
-        <h2 class="trial-detail-subtitle"> Study Designs: {{trial.study_designs}}</h2>
-        <h2 class="trial-detail-subtitle"> Start Date: {{trial.start_date}}</h2>
+        <h2 class="trial-detail-ntc"> {{trial.nct_number}}</h2>
+        <div class="trail-detail-">
+        <div class="trail-detail-labels">
+            <span>Classification:</span>
+            <span>Phase:</span>
+            <span>Recruitment Status:</span>
+            <span>Sponsor:</span>
+            <span>Minimum Age:</span>
+            <span class="long">Conditions:</span>
+            <span>Enrolled:</span>
+            <span>Funded By:</span>
+            <span class="long">Study Designs:</span>
+            <span>Start Date:</span>
+        </div>
+        <div class="trial-detail-values">
+            <span class="trial-detail-subtitle"> something{{trial.classification}}</span>
+            <span class="trial-detail-subtitle"> something{{trial.phases}}</span>
+            <span class="trial-detail-subtitle"> {{trial.recruitment}}</span>
+            <span class="trial-detail-subtitle"> {{trial.sponsor}}</span>
+            <span class="trial-detail-subtitle"> {{trial.age}}</span>
+            <span class="trial-detail-subtitle long"> Conditions: {{trial.conditions}}</span>
+            <span class="trial-detail-subtitle"> {{trial.enrolment}}</span>
+            <span class="trial-detail-subtitle"> {{trial.funded_by}}</span>   
+            <span class="trial-detail-subtitle long"> {{trial.study_designs}}</span>            
+            <span class="trial-detail-subtitle"> {{trial.start_date}}</span>
+        </div>
+        <button type="button" class="trial-detail-summary" onclick="print()"> Print Summary </button>
+                
+        </div>
         <!--<h2 class="trial-detail-subtitle"> Outcome Measures: {{trial.outcome_measures}}</h2>-->
     </div>
     
-    <pre>{{trial}}</pre>
+    <!--<pre>{{trial}}</pre>-->
     
 </div>
 <div class="trial-detail-similiar-trials-bar">

@@ -7,6 +7,27 @@
   /*background-color: var(--greyish-brown);*/
   padding-left: 40px;
 }
+.trial-detail-summary {
+  width: 320.7px;
+  height: 55px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border-radius: 100px;
+  border: solid 3px #50e3c2;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  text-align: center;
+  color: #ededed;
+  cursor: pointer;
+}
+.trial-detail-summary:hover{
+    background-color: #6cc1b1;
+    color:#3d3d3d;
+}
 .trial-detail-title,.trial-detail-ntc,trial-detail-subtitle,.trail-detail-label{
   font-family: Roboto;
   font-weight: normal;

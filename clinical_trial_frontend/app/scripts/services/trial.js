@@ -13,7 +13,7 @@ angular.module('appApp')
     var queryDeferred;
     
     function get_trial(name){
-       return {'name':name};
+       return {'name':name,'interventions':'Behavioral: Interviews - Colorectal Cancer Participants|Behavioral: Questionnaire|Behavioral: Focus Groups|Behavioral: Interviews - Caregivers of Colorectal Cancer Participants','ntc_number':'NCT01470586','phases':'Phase 2|Phase 3'};
     }    
     function get_list_of_trials(){
         return [get_trial("a1"),get_trial("b2"),get_trial("c3"),get_trial("d4")];              

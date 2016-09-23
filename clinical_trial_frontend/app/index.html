@@ -2,10 +2,12 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>ClinicalPath - your road to recovery</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="icon" href="favicon.ico?v=2" />
+
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
@@ -13,6 +15,8 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/trial-detail.css">
+    <link rel="stylesheet" href="styles/trial-similar.css">
     <!-- endbuild -->
     <link href="https://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro" rel="stylesheet">
   </head>
@@ -21,15 +25,18 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
+    <div ng-controller="SearchCtrl">
+      <img ng-show="showHeader" src="images/home-header.png" />
     <!-- Add your site or application content here -->
-    <div class="header" ng-controller="SearchCtrl">
-      <img class="logo" src="images/mock-logo.png" ui-sref="home"/>
+    <div class="header" >
+      <img class="logo" src="images/logo-01@3x.png" ui-sref="home"/>
       <form ng-submit="submit(searchText)">
         <input type="text" class="form-control search-bar" ng-model="searchText" placeholder="Search for a trial"/>
-        <div ng-show=failedToLoad class="alert alert-danger">
+        <div ng-if=failedToLoad class="alert alert-danger">
           <strong>Failed to find a trial!</strong> The system failed to find a trial with the number you requested - sorry.
         </div>          
       </form>
+    </div>
     </div>
 
     <div class="">
