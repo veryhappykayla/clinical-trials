@@ -1,0 +1,85 @@
+
+.trial-detail-left-bg {
+  width: 100%;
+  height: 614px;
+  opacity: 0.7;
+  background-color: #3d3d3d;
+  /*background-color: var(--greyish-brown);*/
+  padding-left: 40px;
+}
+.trial-detail-title,.trial-detail-ntc,trial-detail-subtitle,.trail-detail-label{
+  font-family: Roboto;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+}
+.trial-detail-title {
+  width: 60%;
+  /*height: 35px;*/
+  font-size: 30px;
+  font-weight: bold;  
+  color: #50e3c2;  
+  padding-top: 60px;
+  margin-top:0px;
+  margin-bottom: 0px;
+}
+.trail-detail-labels{
+    width:200px;
+    float: left;
+}
+.trail-detail-labels span {    
+  height: 25px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #50e3c2;
+  display: block;  
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.trial-detail-values{
+    float:left;    
+}
+.trial-detail-ntc {
+  /*width: 742px;
+  height: 24px;*/  
+  font-size: 20px;  
+  margin-top:0px;
+  color: #ffffff;  
+}
+.trial-detail-subtitle,.trial-detail-classification {
+  width: 600px;
+  height: 25px;  
+  font-size: 20px;
+  color: #ffffff;  
+  margin-bottom: 10px;
+  /*margin-top: 5px;*/
+  font-weight: normal;
+  display: block;
+}
+.trial-detail-classification {
+  font-weight: bold; 
+}
+
+.trial-detail-similiar-trials-bar {
+  width: 100%;
+  height: 40px;
+  background-color: #ededed;  
+}
+.trial-detail-similiar-trials-text {
+  width: 60%;
+  height: 27px;
+  font-family: Roboto;
+  font-size: 23px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  text-align: center;
+  color: #000000;
+  margin: auto;
+  padding-top: 8px;
+}
+
+.long{
+    margin-bottom:35px !important; 
+}
